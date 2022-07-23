@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>QR Code Generator</title>
+  </head>
+  <body>
+    <h1>QR CODE</h1>
+    <main>
+      <section id="qr-code-settings" class="container container-front">
+        <header>
+          <h2>Generate your QR Code</h2>
+          <h3>
+            Adjust the settings below to make your QR code look as you want
+          </h3>
+        </header>
+        <div>
+          <div class="setting">
+            <label for="data">Text/URL</label>
+            <span>Include text or a URL you want the QR code to lead to</span>
+            <input type="text" name="data" id="data" min="1" max="900" />
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,18 +1,26 @@
 //text
 const dataInput = document.querySelector("#data");
-console.log(dataInput.value);
 
 //colors from here
-const mainColorPicker = document.querySelector('#main-color');
-const backgroundColorPicker = document.querySelector('#bg-color');
+const mainColorPicker = document.querySelector("#color");
+const bgColorPicker = document.querySelector("#bg-color");
 
-const updateColor = () => {
-    const value = e.target.value;
-}
+const mainColorValue = document.querySelector("#color-value");
+const bgColorValue = document.querySelector("#bg-color-value");
 
-const addColorPickerEventListener = () => { 
-    mainColorPicker.addEventListener('change', updateColor);
-    backgroundColorPicker.addEventListener('change', updateBackgroundColor) 
-}
+const updateColor = (e) => {
+  const value = e.target.value;
+  mainColorValue.innerText = value;
+};
+
+const updateBgColor = (e) => {
+  const value = e.target.value;
+  bgColorValue.innerText = value;
+};
+
+const addColorPickerEventListener = () => {
+  mainColorPicker.addEventListener("change", updateColor);
+  bgColorPicker.addEventListener("change", updateBgColor);
+};
 
 addColorPickerEventListener();

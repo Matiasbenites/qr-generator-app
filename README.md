@@ -1,4 +1,4 @@
-# QR Code Generator API
+# ✨QR Code Generator API✨
 
 ---
 
@@ -36,6 +36,5 @@ a computer/laptop to copy the files to with a code editor of your choice
 ```
 
 ## Preview
-
 <img src="/prev.png" height="500" style="border-radius:10px;margin-bottom:1rem;" />
 ```

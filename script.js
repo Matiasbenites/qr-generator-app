@@ -57,6 +57,24 @@ addSliderEventListeners();
 //submit
 const submitButton = document.querySelector("#cta");
 
+const showInputError = () => {
+  dataInput.classList.add("error");
+};
+
+const addDataInputEventListener = () => {
+  dataInput.addEventListener("change", (e) => {
+    if (e.target.value !== "") {
+      dataInput.classList.remove("error");
+      submitButton.removeAttribute("disabled");
+    } else {
+      dataInput.classList.add("error");
+      submitButton.removeAttribute("disabled", true);
+    }
+  });
+};
+
+addDataInputEventListener();
+
 const prepareParameters = (params) => {
   return {
     data: params.data,
@@ -71,15 +89,17 @@ const prepareParameters = (params) => {
 const getQrCode = (parameters) => {
   console.log(new URLSearchParams(parameters).toString());
   const baseUrl = "http://api.qrserver.com/v1/create-qr-code/";
-  // const urlParams
 
-  //fetch()...
+  fetch(`${baseUrl}?${urlParams}`);
 };
 
 const onSubmit = () => {
   console.log("clicked");
 
   const data = dataInput.value;
+  if (!data.length) {
+    return showInputError();
+  }
   const color = mainColorPicker.value;
   const bgColor = bgColorPicker.value;
   const size = sizeSlider.value;

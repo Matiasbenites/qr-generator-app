@@ -32,5 +32,3 @@ Communication tool:
 
 Tech:
 a computer/laptop to copy the files to with a code editor of your choice
-
-```

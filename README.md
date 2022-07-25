@@ -10,7 +10,7 @@
     background: #F1DEDE;
     border-radius:10px;
     font-size:0.85rem;
-    font-weight:600;">Official API Docs</a> |
+    font-weight:600;">Official API Docs</a>
 ---
 
 ## Description

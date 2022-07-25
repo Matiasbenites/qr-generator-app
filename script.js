@@ -57,8 +57,28 @@ addSliderEventListeners();
 //submit
 const submitButton = document.querySelector("#cta");
 
+const prepareParameters = (params) => {
+  return {
+    data: params.data,
+    size: `${params.size} x ${params.size}`,
+    color: params.color.replace("#", ""),
+    bgcolor: params.bgColor.replace("#", ""),
+    qzone: params.qZone,
+    format: params.format,
+  };
+};
+
+const getQrCode = (parameters) => {
+  console.log(new URLSearchParams(parameters).toString());
+  const baseUrl = "http://api.qrserver.com/v1/create-qr-code/";
+  // const urlParams
+
+  //fetch()...
+};
+
 const onSubmit = () => {
   console.log("clicked");
+
   const data = dataInput.value;
   const color = mainColorPicker.value;
   const bgColor = bgColorPicker.value;
@@ -66,10 +86,17 @@ const onSubmit = () => {
   const qZone = marginSlider.value;
   const format = imageFormat.value;
 
-  console.log(data, color, bgColor, size, qZone, format);
+  const parameters = prepareParameters({
+    data,
+    color,
+    bgColor,
+    size,
+    qZone,
+    format,
+  });
+
+  getQrCode(parameters);
 };
-
-
 
 const addSubmitEventListener = () => {
   submitButton.addEventListener("click", onSubmit);

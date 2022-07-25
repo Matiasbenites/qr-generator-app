@@ -120,16 +120,33 @@
             <button id="cta" type="submit">Generate QR</button>
           </div>
         </div>
-      </section>
 
-      <section id="qr-code-result" class="container container-back">
-        <header>
-          <h2>Your QR Code is ready</h2>
-          <h3>Scan the image below to see it in action</h3>
-        </header>
-        <img src="" alt="qr-code" id="qr-code-image" />
+
       </section>
-    </main>
+       <section id="qr-code-result" class="container container-back">
+          <header>
+            <h2>Your QR Code is ready</h2>
+            <h3>Scan the image below to see it in action</h3>
+          </header>
+          <div class="setting">
+            <img src="" alt="qr-code" id="qr-code-image" />
+          </div>
+
+          <div class="info">
+            <p>Right click on the image and select <b>"Save Image As"</b> to download the file
+            </p>
+
+            <p>Or need to make some changes?</p>
+
+            <div class="cta">
+                <button id="edit" type="submit">
+                    Go back</button>
+            </div>
+        </div>
+
+       
+        </section>
+     
     <script src="script.js"></script>
   </body>
 </html>

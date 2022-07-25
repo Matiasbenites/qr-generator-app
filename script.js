@@ -32,9 +32,9 @@ addColorPickerEventListener();
 //sliders here
 
 const sizeSlider = document.querySelector("#size");
-const marginSlider = document.querySelector("#margin");
-
 const sizeValue = document.querySelector("#size-value");
+
+const marginSlider = document.querySelector("#margin");
 const marginValue = document.querySelector("#margin-value");
 
 const updateSize = (e) => {
@@ -61,22 +61,22 @@ const showInputError = () => {
   dataInput.classList.add("error");
 };
 
-const addDataInputEventListener = () => {
+const dataInputEventListener = () => {
   dataInput.addEventListener("change", (e) => {
     if (e.target.value !== "") {
       dataInput.classList.remove("error");
       submitButton.removeAttribute("disabled");
     } else {
       dataInput.classList.add("error");
-      submitButton.removeAttribute("disabled", true);
+      submitButton.setAttribute("disabled", true);
     }
   });
 };
 
-addDataInputEventListener();
+dataInputEventListener();
 
 const prepareParameters = (params) => {
-  return {
+  const prepared = {
     data: params.data,
     size: `${params.size} x ${params.size}`,
     color: params.color.replace("#", ""),
@@ -84,13 +84,31 @@ const prepareParameters = (params) => {
     qzone: params.qZone,
     format: params.format,
   };
+
+  return prepared;
+};
+const settingsContainer = document.querySelector("#qr-code-settings");
+const resultsContainer = document.querySelector("#qr-code-result");
+const qrCodeImage = document.querySelector("#qr-code-image");
+
+const displayQrCode = (imgUrl) => {
+  settingsContainer.classList.add("flipped");
+  resultsContainer.classList.add("flipped");
+
+  qrCodeImage.setAttribute("src", imgUrl);
 };
 
 const getQrCode = (parameters) => {
-  console.log(new URLSearchParams(parameters).toString());
   const baseUrl = "http://api.qrserver.com/v1/create-qr-code/";
+  const urlParams = new URLSearchParams(parameters).toString();
 
-  fetch(`${baseUrl}?${urlParams}`);
+  const fullUrl = `${baseUrl}?${urlParams}`;
+
+  fetch(fullUrl).then((response) => {
+    if (response.status === 200) {
+      displayQrCode(fullUrl);
+    }
+  });
 };
 
 const onSubmit = () => {
@@ -123,3 +141,16 @@ const addSubmitEventListener = () => {
 };
 
 addSubmitEventListener();
+
+const editButton = document.querySelector("#edit");
+
+const onEdit = () => {
+  settingsContainer.classList.remove("flipped");
+  resultsContainer.classList.remove("flipped");
+};
+
+const addEditEventListener = () => {
+  editButton.addEventListener("click", onEdit);
+};
+
+addEditEventListener();
